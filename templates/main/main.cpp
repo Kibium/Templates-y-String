@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 
-	/*Vector3 <int> v;
+	Vector3 <int> v;
 	Vector3 <char> f ('p', 'e', 't');
 	Vector3 <char> c = f;
 
@@ -18,8 +18,8 @@ int main() {
 
 	cout << sum.x << ' ' << sum.y << ' ' << sum.z << endl;
 
-	vec.distance_to(vec2);
-*/
+	vec.distance_to(sum); // no va
+/*
 
 	Strin s1 (" Gitano");
 
@@ -27,7 +27,7 @@ int main() {
 
 	Strin s3 = s2;
 
-	Strin s4 = s2 + s1;
+	Strin s4 = s2 + s1;*/
 
 	system("pause");
 	return 0;

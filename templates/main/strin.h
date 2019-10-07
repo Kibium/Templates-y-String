@@ -1,8 +1,11 @@
+#ifndef STRIN
+#define STRIN
+
 #include <vector>
 #include <iostream>
 
 class Strin {
-	std::vector<char> chars;
+	std::vector<char> chars; //use a const char*
 
 public:
 
@@ -49,3 +52,5 @@ public:
 
 
 };
+
+#endif STRIN
