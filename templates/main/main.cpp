@@ -5,7 +5,9 @@ using namespace std;
 
 int main() {
 
-	/*Vector3 <int> v;
+	cout << "--- Vector3 stuff ---" << endl;
+
+	Vector3 <int> v;
 	Vector3 <char> f ('p', 'e', 't');
 	Vector3 <char> c = f;
 
@@ -17,15 +19,22 @@ int main() {
 
 	vec.Normalize();
 
-	vec.distance_to(vec2);*/
+	vec.distance_to(vec2);
 
+	cout << endl << "--- Strin stuff ---" << endl;
 
-	Strin s1("hello");
+	Strin s1("cul");
+	//s1.clear();
+	s1.print();
+	Strin ss("merda");
 
 	Strin s2(s1);
 
-	Strin s3 = s1 + s2;
+	Strin s3 = s1 + ss;
+	s3.print();
 
+	if (s1 == s3)
+		cout << "Yes" << endl;
 
 	system("pause");
 	return 0;

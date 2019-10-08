@@ -9,7 +9,6 @@ private:
 
 public:
 
-
 	//This constructor works
 	Strin(const char* source) {
 
@@ -48,7 +47,7 @@ public:
 
 		}
 
-		chars = new char[size];
+		chars = new char[size + 1];
 
 
 		for (int i = 0; i < size; i++) {
@@ -57,18 +56,18 @@ public:
 
 		}
 
-
-		for (int i = 0; i < size; i++)
-			std::cout << chars[i];
 	};
-
-	//Strings received correctly
+	
 	friend Strin operator + (const Strin &a, const Strin &b) {
 
-		Strin s(" ");
+		Strin result(" ");
 
+		//In order to iterate through the two given Strin objects
 		int sizeA = 0;
 		int sizeB = 0;
+
+		//Auxiliar variable that allows to iterate through the result Strin
+		int counter = 0;
 
 		char* temp = a.chars;
 		char* temp2 = b.chars;
@@ -89,26 +88,68 @@ public:
 
 		}
 
-		s.chars = new char[sizeA + sizeB - 1];
+		result.chars = new char[sizeA + sizeB + 1];
 
-		for (int i = 0; i < sizeA + sizeB; i++) {
+		//Adding the 1st string
+		for (int i = 0; i < sizeA; i++) {
 
-			//if (i < sizeA)
-				//s.chars[i] = temp3[i];
-
+			result.chars[counter] = temp3[i];
+			counter++;
 			
 		}
 
-		std::cout << s.length() << std::endl;
+		//Adding the second string
+		for (int i = 0; i < sizeB; i++) {
 
-		return s;
+			result.chars[counter] = temp4[i];
+			counter++;
+
+		}
+		return result;
 
 	}
-
+	
 	friend bool operator == (const Strin &a, const Strin &b) {
 
+		const char* temp_a = a.chars;
+		const char* temp_b = b.chars;
+
+		const char* temp_a1 = temp_a;
+		const char* temp_b1 = temp_b;
+
+		int sizeA = 0;
+		int sizeB = 0;
+
+		//Get the size of the 1st
+		while (*temp_a1 != '\0') {
+			sizeA++;
+			temp_a1++;
+		}
+
+		//Get the size of the 2nd
+		while (*temp_b1 != '\0') {
+			sizeB++;
+			temp_b1++;
+		}
+
+		//Check if the two are the same
+		while (*temp_a == '\0') {
+
+			if (*temp_a != *temp_b)
+				return false;
+			else {
+				temp_a++;
+				temp_b++;
+			}
 
 
+		}
+
+		//Check if the two have the same size
+		if (sizeA == sizeB)
+			return true;
+		else
+			return false;
 	}
 
 	int length() {
