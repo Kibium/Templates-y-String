@@ -8,44 +8,43 @@ private:
 
 public:
 
-	/*Strin operator + (const Strin &s) {
+	friend Strin operator + (const Strin &s1, const Strin &s2) {
 
-		for (int i = 0; i < s.length(); i++) {
-			chars.push_back(s.chars[i]);
+		Strin tmp;
+
+
+
+		return tmp;
+
+	}
+
+	bool operator == (const Strin &s) {
+
+		/*char* temp1 = chars;
+		const char* temp2 = s.chars;
+
+		while (*(temp2) != '\0') {
+
+			std::cout << *temp1 << std::endl;
+
+
+			temp1++;
+			temp2++;
+
+
 		}
-		return *this;
-	}*/
 
-	/*Strin operator = (const char& s) {
+		return true;*/
+		return true;
+	}
 
-		int count = 0;
-		chars.clear();
-
-		while (s != '\0') {
-			chars.push_back(s + count);
-			count++;
-		}
-
-		return *this;
-	}*/
-
-	/*	bool operator == (const Strin &s) {
-
-			bool equal = false;
-			for (int i = 0; i < s.chars.size(); ++i) {
-				if (chars[i] != s.chars[i])
-					return false;
-				else
-					continue;
-			}
-
-			return true;
-		}*/
+	Strin() {
+		chars[0] = '\0';
+	}
 
 	Strin(const char* string) {
 
 		char * temp = chars;
-		int counter = 0;
 
 		//We modify directly the 'chars' array
 		while (*temp++ = *string++) {
@@ -57,18 +56,12 @@ public:
 
 	Strin(const Strin& copy) {
 
-		int size = copy.length();
+		int size = copy.length() + 1;
 
-		//Pointer to out array, to copy its data later
-		char* temp = chars;
-
-		//Pointer to the parameter so we can use the following syntaxis
-		const char* temp_copy = copy.chars;
-		while (*temp++ = *temp_copy++) {
-
-			//Directly modifying the 'chars' array
-			*temp = *temp_copy;
+		for (int i = 0; i < size; ++i) {
+			chars[i] = copy.chars[i];
 		}
+
 
 
 
@@ -95,6 +88,7 @@ public:
 		int size = length();
 		memset(chars, '\0', size * sizeof(char));
 	}
+
 	void print() const {
 
 		int size = length();

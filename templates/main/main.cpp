@@ -20,15 +20,23 @@ int main() {
 	vec.distance_to(vec2);*/
 
 
-	Strin s1("Lolailo");
+	Strin s1("HAHA");
 	//s1.print();
 
-	Strin s2(s1);
-	s2.print();
+	Strin s2 = s1;
+	//s2.print();
 
-	//Strin s3 = s2;
+	Strin s3(s2);
+	//s3.print();
+	
 
-	//Strin s4 = s2 + s1;
+	Strin s4 = s2 + s1;
+	//s4.print();
+
+	if (s1 == s2)
+		cout << "yes" << endl;
+	else
+		cout << "no" << endl;
 
 	system("pause");
 	return 0;
