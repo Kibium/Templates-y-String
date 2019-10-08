@@ -4,7 +4,7 @@
 class Strin {
 
 private:
-	char *chars;
+	char chars[];
 
 public:
 
@@ -27,65 +27,82 @@ public:
 		}
 
 		return *this;
-	}
-
-	bool operator == (const Strin &s) {
-
-		bool equal = false;
-		for (int i = 0; i < s.chars.size(); ++i) {
-			if (chars[i] != s.chars[i])
-				return false;
-			else
-				continue;
-		}
-
-		return true;
 	}*/
 
-	Strin() {};
-	Strin(const char* word) {
+	/*	bool operator == (const Strin &s) {
 
-		chars = nullptr;
-		const char* w2 = word;
+			bool equal = false;
+			for (int i = 0; i < s.chars.size(); ++i) {
+				if (chars[i] != s.chars[i])
+					return false;
+				else
+					continue;
+			}
 
-		//Length
+			return true;
+		}*/
+
+	Strin(const char* string) {
+
+		char * temp = chars;
+		int counter = 0;
+
+		//We modify directly the 'chars' array
+		while (*temp++ = *string++) {
+
+			//*(chars - 1) = *temp;
+
+		}
+	}
+
+	Strin(const Strin& copy) {
+
+		int size = copy.length();
+
+		//Pointer to out array, to copy its data later
+		char* temp = chars;
+
+		//Pointer to the parameter so we can use the following syntaxis
+		const char* temp_copy = copy.chars;
+		while (*temp++ = *temp_copy++) {
+
+			//Directly modifying the 'chars' array
+			*temp = *temp_copy;
+		}
+
+
+
+	};
+
+	int length() const {
+
+		const char * temp = chars;
 		int size = 0;
-		while (*w2 != '\0') {
-			
-			*chars = *w2;
 
-			chars++;
+		//I iterate the array to the last character, which is a '\0', an invisible one
+		while (*temp != '\0') {
+
 			size++;
+			temp++;
 
-			w2++;
 		}
 
+		return size;
+	}
 
-		std::cout << size << std::endl;
+	//Supposedly substitutes all characters by '\0'
+	void clear() {
+		int size = length();
+		memset(chars, '\0', size * sizeof(char));
+	}
+	void print() const {
 
-		for (int i = 0; i < length(); ++i) {
+		int size = length();
+
+		for (int i = 0; i < size; i++)
 			std::cout << chars[i];
-		}
 
 		std::cout << std::endl;
-
 	}
-//	Strin(const Strin& copy) : chars(copy.chars) { };
-
-	int length() {
-
-		int size = 0;
-
-		if (chars != nullptr) {
-			while (*chars != '\0') {
-				size++;
-				chars++;
-			}
-		}
-		return size;
-
-	}
-	void clear();
-
 
 };

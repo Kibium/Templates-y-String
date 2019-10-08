@@ -20,9 +20,11 @@ int main() {
 	vec.distance_to(vec2);*/
 
 
-	Strin s1("Gitanos");
+	Strin s1("Lolailo");
+	//s1.print();
 
-	//Strin s2("holayolo");
+	Strin s2(s1);
+	s2.print();
 
 	//Strin s3 = s2;
 
