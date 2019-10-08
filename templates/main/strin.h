@@ -4,82 +4,43 @@
 class Strin {
 
 private:
-	char chars[];
+	char *chars;
+
 
 public:
 
-	/*Strin operator + (const Strin &s) {
 
-		for (int i = 0; i < s.length(); i++) {
-			chars.push_back(s.chars[i]);
-		}
-		return *this;
-	}*/
+	//This constructor works
+	Strin(const char* source) {
 
-	/*Strin operator = (const char& s) {
+		int size = 0;
+		const char* temp = source;
 
-		int count = 0;
-		chars.clear();
+		//Get the size
+		while (*temp != '\0') {
 
-		while (s != '\0') {
-			chars.push_back(s + count);
-			count++;
+			size++;
+			*temp++;
+
 		}
 
-		return *this;
-	}*/
+		chars = new char[size];
 
-	/*	bool operator == (const Strin &s) {
+		for (int i = 0; i < size; i++) {
 
-			bool equal = false;
-			for (int i = 0; i < s.chars.size(); ++i) {
-				if (chars[i] != s.chars[i])
-					return false;
-				else
-					continue;
-			}
-
-			return true;
-		}*/
-
-	Strin(const char* string) {
-
-		char * temp = chars;
-		int counter = 0;
-
-		//We modify directly the 'chars' array
-		while (*temp++ = *string++) {
-
-			//*(chars - 1) = *temp;
+			chars[i] = source[i];
 
 		}
 	}
 
-	Strin(const Strin& copy) {
+	//This constructor also works
+	Strin(const Strin& source) {
 
-		int size = copy.length();
-
-		//Pointer to out array, to copy its data later
-		char* temp = chars;
-
-		//Pointer to the parameter so we can use the following syntaxis
-		const char* temp_copy = copy.chars;
-		while (*temp++ = *temp_copy++) {
-
-			//Directly modifying the 'chars' array
-			*temp = *temp_copy;
-		}
-
-
-
-	};
-
-	int length() const {
-
-		const char * temp = chars;
 		int size = 0;
 
-		//I iterate the array to the last character, which is a '\0', an invisible one
+		char* temp = source.chars;
+		char* temp2 = source.chars;
+
 		while (*temp != '\0') {
 
 			size++;
@@ -87,7 +48,84 @@ public:
 
 		}
 
+		chars = new char[size];
+
+
+		for (int i = 0; i < size; i++) {
+
+			chars[i] = temp2[i];
+
+		}
+
+
+		for (int i = 0; i < size; i++)
+			std::cout << chars[i];
+	};
+
+	//Strings received correctly
+	friend Strin operator + (const Strin &a, const Strin &b) {
+
+		Strin s(" ");
+
+		int sizeA = 0;
+		int sizeB = 0;
+
+		char* temp = a.chars;
+		char* temp2 = b.chars;
+
+		char *temp3 = temp;
+		char *temp4 = temp2;
+
+		while (*temp != '\0') {
+
+			sizeA++;
+			temp++;
+
+		}
+		while (*temp2 != '\0') {
+
+			sizeB++;
+			temp2++;
+
+		}
+
+		s.chars = new char[sizeA + sizeB - 1];
+
+		for (int i = 0; i < sizeA + sizeB; i++) {
+
+			//if (i < sizeA)
+				//s.chars[i] = temp3[i];
+
+			
+		}
+
+		std::cout << s.length() << std::endl;
+
+		return s;
+
+	}
+
+	friend bool operator == (const Strin &a, const Strin &b) {
+
+
+
+	}
+
+	int length() {
+
+		int size = 0;
+		char* temp = chars;
+
+		while (*temp != '\0') {
+
+			size++;
+			temp++;
+
+		}
+
+
 		return size;
+
 	}
 
 	//Supposedly substitutes all characters by '\0'
@@ -95,7 +133,8 @@ public:
 		int size = length();
 		memset(chars, '\0', size * sizeof(char));
 	}
-	void print() const {
+
+	void print() {
 
 		int size = length();
 
@@ -103,6 +142,10 @@ public:
 			std::cout << chars[i];
 
 		std::cout << std::endl;
+	}
+
+	char* GetChars() {
+		return chars;
 	}
 
 };

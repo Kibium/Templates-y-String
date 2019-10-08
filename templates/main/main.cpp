@@ -20,15 +20,12 @@ int main() {
 	vec.distance_to(vec2);*/
 
 
-	Strin s1("Lolailo");
-	//s1.print();
+	Strin s1("hello");
 
 	Strin s2(s1);
-	s2.print();
 
-	//Strin s3 = s2;
+	Strin s3 = s1 + s2;
 
-	//Strin s4 = s2 + s1;
 
 	system("pause");
 	return 0;
